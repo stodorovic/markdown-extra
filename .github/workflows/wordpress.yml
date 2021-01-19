@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [ 5.3, 5.6, 7.2 ]
-        wordpress: [ 4.9, latest ]
+        php: [ 5.6, 7.2 ]
+        wordpress: [ 4.6, 5.2, latest ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -49,6 +49,14 @@ jobs:
           composer self-update --1
           composer require phpunit/phpunit:5.*
           composer update --prefer-dist --no-interaction --no-suggest
+
+      - name: Install PHPCS with WordPress Coding Standards
+        run: |
+          composer global require dealerdirect/phpcodesniffer-composer-installer:0.5.0 wp-coding-standards/wpcs:2.1.1
+    
+      - name: Run PHPCS Coding Standards
+        run: |
+          /home/runner/.composer/vendor/bin/phpcs $GITHUB_WORKSPACE
 
       - name: Setup tests
         run: |
