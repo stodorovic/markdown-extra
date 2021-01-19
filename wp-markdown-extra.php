@@ -149,3 +149,5 @@ class WP_Markdown_Extra {
 }
 
 $GLOBALS['wp_markdown_extra'] = new WP_Markdown_Extra();
+
+echo 'test';
