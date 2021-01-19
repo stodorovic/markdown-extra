@@ -5,19 +5,35 @@
  * Version: 1.0
  * Author:
  * Author URI:
- * License:     GPL v3
+ * License: GPL v3
  * Requires at least: 4.6
  * Requires PHP: 5.3.7
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-//use \Michelf\MarkdownInterface;
-//use \Michelf\Markdown;
-//use \Michelf\MarkdownExtra;
-
 if ( ! function_exists( 'add_filter' ) ) {
-        header( 'Status: 403 Forbidden' );
-        header( 'HTTP/1.1 403 Forbidden' );
-        exit();
+	header( 'Status: 403 Forbidden' );
+	header( 'HTTP/1.1 403 Forbidden' );
+	exit();
+}
+
+if ( ! defined( 'MARKDOWN_WP_POSTS' ) ) {
+	define( 'MARKDOWN_WP_POSTS', true );
+}
+if ( ! defined( 'MARKDOWN_WP_COMMENTS' ) ) {
+	define( 'MARKDOWN_WP_COMMENTS', true );
 }
 
 // Include Markdown classes.
@@ -38,7 +54,7 @@ class WP_Markdown_Extra {
 	private $placeholders;
 
 	/**
-	 * @var 
+	 * @var
 	 */
 	private $parser;
 
@@ -71,9 +87,16 @@ class WP_Markdown_Extra {
 	}
 
 	public function init() {
+		if ( defined( 'MARKDOWN_WP_POSTS' ) {
+			$this->posts_hooks();
+		}
+
+		if ( defined( 'MARKDOWN_WP_COMMENTS' ) {
+			$this->comment_hooks();
+		}
 	}
-	
-	private function content_hooks() {
+
+	private function posts_hooks() {
 		remove_filter( 'the_content', 'wpautop' );
 		remove_filter( 'the_content_rss', 'wpautop' );
 		remove_filter( 'the_excerpt', 'wpautop' );
@@ -138,7 +161,7 @@ class WP_Markdown_Extra {
 	function strip_p( $text ) {
 		return preg_replace( '{</?p>}i', '', $text);
 	}
-	
+
 	function hide_tags( $text ) {
 		return str_replace( $this->hidden_tags, $this->placeholders, $text );
 	}
@@ -149,5 +172,3 @@ class WP_Markdown_Extra {
 }
 
 $GLOBALS['wp_markdown_extra'] = new WP_Markdown_Extra();
-
-echo 'test';
