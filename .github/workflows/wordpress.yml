@@ -48,7 +48,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer self-update --1
+          composer self-update
           composer require phpunit/phpunit:5.*
           composer update --prefer-dist --no-interaction --no-suggest
 
@@ -70,7 +70,8 @@ jobs:
       -   name: Execute tests
           run: |
             pwd
-            ls -al
+            ls -al ..
+            ls -al ../..
             php -d memory_limit=-1 vendor/bin/phpunit
           env:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
