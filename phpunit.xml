@@ -7,7 +7,7 @@
         convertNoticesToExceptions="true"
         convertWarningsToExceptions="true"
         verbose="true"
-        syntaxCheck="true"
+        syntaxCheck="false"
         >
         <testsuites>
                 <testsuite name="Unit Tests">
@@ -15,9 +15,11 @@
                 </testsuite>
         </testsuites>
         <filter>
-                <blacklist>
-                        <directory suffix=".php">./Michelf/</directory>
-                        <directory suffix=".php">./tests/</directory>
-                </blacklist>
+                <whitelist>
+                	<directory>.</directory>
+			<exclude>
+				<directory suffix=".php">./Michelf/</directory>
+			</exclude>
+		</whitelist>
         </filter>
 </phpunit>
