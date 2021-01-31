@@ -34,8 +34,10 @@ class Tests_Markdown extends Markdown_Unit_Test_Case {
 
 		$this->go_to( get_permalink( $this->_post_id ) );
 		
-		//var_dump( $GLOBALS['post'] );
-		var_dump( apply_filters( 'the_content', $post->post_content ) );
+		$this->assertSame(
+			apply_filters( 'the_content', $post->post_content ),
+			"<h1>This is an H1</h1>\n\n<ul>\n<li>Red</li>\n<li>Green</li>\n<li>Blue</li>\n</ul>\n"
+		);
 		//var_dump( the_content() );
 	}
 }
