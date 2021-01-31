@@ -87,11 +87,11 @@ class WP_Markdown_Extra {
 	}
 
 	public function init() {
-		if ( defined( 'MARKDOWN_WP_POSTS' ) {
+		if ( defined( 'MARKDOWN_WP_POSTS' ) ) {
 			$this->posts_hooks();
 		}
 
-		if ( defined( 'MARKDOWN_WP_COMMENTS' ) {
+		if ( defined( 'MARKDOWN_WP_COMMENTS' ) ) {
 			$this->comment_hooks();
 		}
 	}
