@@ -22,12 +22,16 @@ jobs:
         php: [ 5.6, 7.2, 7.4, 8.0 ]
         include:
           - php: '5.6'
+            phpunit: '5.*'
             wordpress: '4.6'
           - php: '7.2'
+            phpunit: '7.*'
             wordpress: '4.9'
           - php: '7.4'
+            phpunit: '8.*'
             wordpress: '5.2'
           - php: '8.0'
+            phpunit: '9.*'
             wordpress: '5.6'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -55,7 +59,7 @@ jobs:
       - name: Install dependencies
         run: |
           composer self-update
-          composer require phpunit/phpunit:5.*
+          composer require "phpunit/phpunit:${{ matrix.phpunit }}" --no-interaction --no-update
           composer update --prefer-dist --no-interaction --no-suggest
 
 #      - name: Install PHPCS with WordPress Coding Standards
