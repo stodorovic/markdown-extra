@@ -19,12 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [ 5.6, 7.2 ]        
+        php: [ 5.6, 7.2, 7.4, 8.0 ]
         include:
           - php: '5.6'
             wordpress: '4.6'
           - php: '7.2'
             wordpress: '4.9'
+          - php: '7.4'
+            wordpress: '5.2'
+          - php: '8.0'
+            wordpress: '5.6'
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -42,7 +46,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
             php-version: ${{ matrix.php }}
-            extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, mysql, mysqli, pdo_mysql, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
+            extensions: dom, curl, libxml, mbstring, zip, pcntl, mysql, mysqli, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
             coverage: none
 
       - name: Start MySQL

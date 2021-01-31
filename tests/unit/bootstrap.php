@@ -6,15 +6,13 @@ error_reporting( E_ALL );
 
 /**
  * Unit Tests Bootstrap
- *
- * @since 1.3.2
  */
 class Unit_Tests_Bootstrap {
 
 	/** @var \Unit_Tests_Bootstrap instance */
 	protected static $instance = null;
 
-	/** @var string directory where wordpress-tests-lib    is installed */
+	/** @var string directory where wordpress-tests-lib is installed */
 	public $wp_tests_dir;
 
 	/** @var string testing directory */
@@ -25,8 +23,6 @@ class Unit_Tests_Bootstrap {
 
 	/**
 	 * Setup the unit testing environment
-	 *
-	 * @since 1.3.2
 	 */
 	public function __construct() {
 
@@ -46,11 +42,14 @@ class Unit_Tests_Bootstrap {
 		// Load test function so tests_add_filter() is available
 		require_once $this->wp_tests_dir . '/includes/functions.php';
 
+		// Load plugin
+		tests_add_filter( 'muplugins_loaded', array( $this, 'load_markdown_extra' ) );
+
 		// Load the WP testing environment
 		if ( $manual_bootstrap ) {
 			require_once $this->wp_tests_dir . '/includes/bootstrap.php';
 
-			// Load Give testing framework
+			// Load testing framework
 			// Note: you must copy code of this function to your include function of bootstrap class
 			// Or use Unit_Tests_Bootstrap::includes();
 			$this->includes();
@@ -58,9 +57,14 @@ class Unit_Tests_Bootstrap {
 	}
 
 	/**
+	 * Load plugin
+	 */
+	public function load_markdown_extra() {
+		require_once $this->plugin_dir . '/markdown-extra.php';
+	}
+
+	/**
 	 * Load specific test cases
-	 *
-	 * @since 1.3.2
 	 */
 	public function includes() {
 	}
@@ -68,7 +72,6 @@ class Unit_Tests_Bootstrap {
 	/**
 	 * Get the single class instance.
 	 *
-	 * @since 1.3.2
 	 * @return Unit_Tests_Bootstrap
 	 */
 	public static function instance() {
