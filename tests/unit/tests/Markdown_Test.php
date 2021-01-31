@@ -33,7 +33,7 @@ class Tests_Markdown extends Markdown_Unit_Test_Case {
 		$this->go_to( get_permalink( $this->_post_id ) );
 		
 		//var_dump( $GLOBALS['post'] );
-		//var_dump( apply_filters( 'the_content', 'xxxxxxxxxxxxx' ) );
-		var_dump( the_content() );
+		var_dump( apply_filters( 'the_content', '# This is an H1\n\n## This is an H2\n' ) );
+		//var_dump( the_content() );
 	}
 }
