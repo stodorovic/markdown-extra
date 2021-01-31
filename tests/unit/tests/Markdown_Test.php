@@ -32,8 +32,8 @@ class Tests_Markdown extends Markdown_Unit_Test_Case {
 	public function test_filter() {
 		$this->go_to( get_permalink( $this->_post_id ) );
 		
-		var_dump( $GLOBALS['post'] );
-		var_dump( apply_filters( 'the_content', 'xxxxxxxxxxxxx' ) );
-		//var_dump( the_content() );
+		//var_dump( $GLOBALS['post'] );
+		//var_dump( apply_filters( 'the_content', 'xxxxxxxxxxxxx' ) );
+		var_dump( the_content() );
 	}
 }
