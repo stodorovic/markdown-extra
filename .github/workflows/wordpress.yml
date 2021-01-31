@@ -76,6 +76,8 @@ jobs:
       -   name: Execute tests
           run: |
             pwd
+            find -type d -print
+            ls -al
             ls -al ..
             ls -al ../..
             php -d memory_limit=-1 vendor/bin/phpunit
