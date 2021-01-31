@@ -3,7 +3,7 @@
 /**
  * Class
  */
-class Tests_Markdown extends Unit_Test_Case {
+class Tests_Markdown extends Markdown_Unit_Test_Case {
 
 	protected $_post_id = null;
 

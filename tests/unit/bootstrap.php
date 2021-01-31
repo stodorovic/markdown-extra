@@ -67,6 +67,9 @@ class Unit_Tests_Bootstrap {
 	 * Load specific test cases
 	 */
 	public function includes() {
+
+		// test cases
+		require_once $this->tests_dir . '/framework/class-markdown-unit-test-case.php';
 	}
 
 	/**
