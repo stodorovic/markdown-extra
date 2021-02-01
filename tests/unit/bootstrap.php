@@ -1,6 +1,6 @@
 <?php
 /**
- * Unit Tests Bootstrap
+ * Markdown_Extra plugin test file.
  *
  * @package Markdown_Extra\Tests
  */
