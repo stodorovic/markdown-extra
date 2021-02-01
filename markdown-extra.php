@@ -91,7 +91,7 @@ class Markdown_Extra {
 
 	/**
 	 * Holds "place holders".
-	 * 
+	 *
 	 * @var array
 	 */
 	private $placeholders;
@@ -119,7 +119,7 @@ class Markdown_Extra {
 
 		$this->placeholders = explode(
 			' ',
-			 // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_str_rot13
+			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_str_rot13
 			str_rot13(
 				'pEj07ZbbBZ U1kqgh4w4p pre2zmeN6K QTi31t9pre ol0MP1jzJR ' .
 				'ML5IjmbRol ulANi1NsGY J7zRLJqPul liA8ctl16T K9nhooUHli'
@@ -221,7 +221,7 @@ class Markdown_Extra {
 	/**
 	 * Add a footnote id prefix to posts when inside a loop.
 	 *
-	 * @param string $text
+	 * @param string $text The text to filter.
 	 */
 	public function markdown_post( $text ) {
 
@@ -237,7 +237,7 @@ class Markdown_Extra {
 	/**
 	 * Add "p".
 	 *
-	 * @param string $text
+	 * @param string $text The text to filter.
 	 */
 	public function add_p( $text ) {
 		if ( ! preg_match( '{^$|^<(p|ul|ol|dl|pre|blockquote)>}i', $text ) ) {
@@ -251,7 +251,7 @@ class Markdown_Extra {
 	/**
 	 * Strip "p".
 	 *
-	 * @param string $text
+	 * @param string $text The text to filter.
 	 */
 	public function strip_p( $text ) {
 		return preg_replace( '{</?p>}i', '', $text );
@@ -260,7 +260,7 @@ class Markdown_Extra {
 	/**
 	 * "Hide" tags.
 	 *
-	 * @param string $text
+	 * @param string $text The text to filter.
 	 */
 	public function hide_tags( $text ) {
 		return str_replace( $this->hidden_tags, $this->placeholders, $text );
@@ -269,7 +269,7 @@ class Markdown_Extra {
 	/**
 	 * "Unhide" tags.
 	 *
-	 * @param string $text
+	 * @param string $text The text to filter.
 	 */
 	public function show_tags( $text ) {
 		return str_replace( $this->placeholders, $this->hidden_tags, $text );
