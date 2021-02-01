@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
-        bootstrap="tests/unit/bootstrap.php"
+        bootstrap="bootstrap.php"
         backupGlobals="false"
         colors="true"
         convertErrorsToExceptions="true"
@@ -10,7 +10,7 @@
         >
         <testsuites>
                 <testsuite name="Unit Tests">
-                        <directory suffix="Test.php">./tests/unit/tests</directory>
+                        <directory suffix="-test.php">./tests/unit/tests</directory>
                 </testsuite>
         </testsuites>
         <filter>
