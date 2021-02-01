@@ -13,12 +13,4 @@
                         <directory suffix="-test.php">./tests</directory>
                 </testsuite>
         </testsuites>
-        <filter>
-                <whitelist>
-                	<directory>.</directory>
-			<exclude>
-				<directory suffix=".php">./Michelf/</directory>
-			</exclude>
-		</whitelist>
-        </filter>
 </phpunit>
