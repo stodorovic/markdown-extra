@@ -17,6 +17,7 @@ jobs:
   test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    name: PHPUnit tests
     strategy:
       matrix:
         php: [ 5.6, 7.2, 7.4 ]
@@ -81,9 +82,9 @@ jobs:
           env:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
 
-  lint:
+  phpcs:
     runs-on:  ubuntu-latest
-    name: PHP lint
+    name: PHPCS
     steps:
       - uses: actions/checkout@v2
       - name: Setup PHP
