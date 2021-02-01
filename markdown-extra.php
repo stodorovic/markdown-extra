@@ -1,11 +1,18 @@
 <?php
 /**
+ * Markdown Extra Unofficial Plugin.
+ *
+ * @package   Markdown_Extra
+ * @copyright Copyright (c) 2021 Jeff Mcneill <https://jeffmcneill.com/markdown-extra>
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 or higher
+ *
+ * @wordpress-plugin
  * Plugin Name: Markdown Extra Unofficial
  * Plugin URI: https://jeffmcneill.com/markdown-extra
  * Description:
  * Version: 1.0.1
- * Author: 
- * Author URI: 
+ * Author:
+ * Author URI:
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Requires at least: 5.2
@@ -13,31 +20,31 @@
  *
  * Copyright (c) 2021 Jeff Mcneill <https://jeffmcneill.com/markdown-extra>
  * All rights reserved.
- * 
+ *
  * Based on PHP Markdown Lib
  * Copyright (c) 2004-2021 Michel Fortin <https://michelf.ca/>
  * All rights reserved.
- * 
+ *
  * Based on Markdown
  * Copyright (c) 2003-2006 John Gruber
  * <https://daringfireball.net/>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are 
+ * modification, are permitted provided that the following conditions are
  * met:
- * 
- * Redistributions of source code must retain the above copyright notice, 
+ *
+ * Redistributions of source code must retain the above copyright notice,
  * this list of conditions and the following disclaimer.
- * 
- * Redistributions in binary form must reproduce the above copyright notice, 
- * this list of conditions and the following disclaimer in the documentation 
+ *
+ * Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
  * and/or other materials provided with the distribution.
- * 
- * Neither the name "Markdown" nor the names of its contributors may be 
- * used to endorse or promote products derived from this software without 
+ *
+ * Neither the name "Markdown" nor the names of its contributors may be
+ * used to endorse or promote products derived from this software without
  * specific prior written permission.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -216,7 +223,9 @@ class Markdown_Extra {
 	}
 
 	/**
+	 * Add "p"
 	 *
+	 * @param string $text
 	 */
 	public function add_p( $text ) {
 		if ( ! preg_match( '{^$|^<(p|ul|ol|dl|pre|blockquote)>}i', $text ) ) {
@@ -228,21 +237,27 @@ class Markdown_Extra {
 	}
 
 	/**
+	 * Strip "p"
 	 *
+	 * @param string $text
 	 */
 	public function strip_p( $text ) {
 		return preg_replace( '{</?p>}i', '', $text );
 	}
 
 	/**
+	 * "Hide" tags
 	 *
+	 * @param string $text
 	 */
 	public function hide_tags( $text ) {
 		return str_replace( $this->hidden_tags, $this->placeholders, $text );
 	}
 
 	/**
+	 * "Unhide" tags
 	 *
+	 * @param string $text
 	 */
 	public function show_tags( $text ) {
 		return str_replace( $this->placeholders, $this->hidden_tags, $text );
