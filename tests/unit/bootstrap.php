@@ -5,10 +5,18 @@
  */
 class Unit_Tests_Bootstrap {
 
-	/** @var \Unit_Tests_Bootstrap instance */
+	/**
+	 * Holds instance.
+	 *
+	 * @var \Unit_Tests_Bootstrap
+	 */
 	protected static $instance = null;
 
-	/** @var string directory where wordpress-tests-lib is installed */
+	/**
+	 * Directory where wordpress-tests-lib is installed.
+	 *
+	 * @var string
+	 */
 	public $wp_tests_dir;
 
 	/** @var string testing directory */
@@ -32,13 +40,13 @@ class Unit_Tests_Bootstrap {
 		$this->wp_tests_dir = getenv( 'WP_TESTS_DIR' ) ? getenv( 'WP_TESTS_DIR' ) : '/tmp/wordpress-tests-lib';
 		$manual_bootstrap   = isset( $GLOBALS['manual_bootstrap'] ) ? (bool) $GLOBALS['manual_bootstrap'] : true;
 
-		// Load test function so tests_add_filter() is available
+		// Load test function so tests_add_filter() is available.
 		require_once $this->wp_tests_dir . '/includes/functions.php';
 
-		// Load plugin
+		// Load plugin.
 		tests_add_filter( 'muplugins_loaded', array( $this, 'load_markdown_extra' ) );
 
-		// Load the WP testing environment
+		// Load the WP testing environment.
 		if ( $manual_bootstrap ) {
 			require_once $this->wp_tests_dir . '/includes/bootstrap.php';
 
@@ -61,7 +69,7 @@ class Unit_Tests_Bootstrap {
 	 */
 	public function includes() {
 
-		// test cases
+		// Test cases.
 		require_once $this->tests_dir . '/framework/class-markdown-unit-test-case.php';
 	}
 
