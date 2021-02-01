@@ -110,5 +110,5 @@ jobs:
 
       - name: Run PHPCS Coding Standards
         run: |
-          vendor/bin/phpcs -v --standard=WordPress --ignore="Michelf/*,vendor/*" $GITHUB_WORKSPACE
-          vendor/bin/phpcs -v --standard=PHPCompatibility --runtime-set testVersion 5.4- --ignore="vendor/*" -p $GITHUB_WORKSPACE
+          vendor/bin/phpcs -v -s --standard=WordPress --ignore="Michelf/*,vendor/*" $GITHUB_WORKSPACE
+          vendor/bin/phpcs -v -s --standard=PHPCompatibility --runtime-set testVersion 5.4- --ignore="vendor/*" -p $GITHUB_WORKSPACE
