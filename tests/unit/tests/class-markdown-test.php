@@ -6,15 +6,7 @@
 class Tests_Markdown extends Markdown_Unit_Test_Case {
 
 	/**
-	 * Set it up
-	 */
-	public function setUp() {
-		parent::setUp();
-	}
-
-	/**
-	 * Test filter
-	 *
+	 * Test the_content and the_excerpt filters.
 	 */
 	public function test_the_content_filter() {
 		global $post;
@@ -25,6 +17,7 @@ class Tests_Markdown extends Markdown_Unit_Test_Case {
 				'post_title'   => 'Test Post',
 				'post_type'    => 'post',
 				'post_content' => "# This is an H1\n\n* Red\n* Green\n* Blue\n",
+				'post_excerpt' => '......',
 				'post_status'  => 'publish',
 			)
 		);

@@ -1,9 +1,5 @@
 <?php
 
-ini_set( 'display_errors', 1 );
-ini_set( 'display_startup_errors', 1 );
-error_reporting( E_ALL );
-
 /**
  * Unit Tests Bootstrap
  */
@@ -25,9 +21,6 @@ class Unit_Tests_Bootstrap {
 	 * Setup the unit testing environment
 	 */
 	public function __construct() {
-
-		ini_set( 'display_errors', 'on' );
-		error_reporting( E_ALL );
 
 		// Ensure server variable is set for WP email functions.
 		if ( ! isset( $_SERVER['SERVER_NAME'] ) ) {
@@ -57,14 +50,14 @@ class Unit_Tests_Bootstrap {
 	}
 
 	/**
-	 * Load plugin
+	 * Load plugin.
 	 */
 	public function load_markdown_extra() {
 		require_once $this->plugin_dir . '/markdown-extra.php';
 	}
 
 	/**
-	 * Load specific test cases
+	 * Load specific test cases.
 	 */
 	public function includes() {
 
