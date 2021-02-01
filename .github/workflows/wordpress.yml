@@ -105,8 +105,8 @@ jobs:
 
       - name: Install PHPCS with WordPress Coding Standards
         run: |
-          composer require dealerdirect/phpcodesniffer-composer-installer wp-coding-standards/wpcs:2.3.0
+          composer require dealerdirect/phpcodesniffer-composer-installer wp-coding-standards/wpcs:2.3.0 phpcompatibility/php-compatibility
 
       - name: Run PHPCS Coding Standards
         run: |
-          vendor/bin/phpcs $GITHUB_WORKSPACE
+          vendor/bin/phpcs --standard=WordPress --ignore="vendor/*" $GITHUB_WORKSPACE
