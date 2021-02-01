@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @package   Markdown_Extra\Unit_Tests_Bootstrap
- *
  * Unit Tests Bootstrap
+ *
+ * @package Markdown_Extra\Tests
  */
 class Unit_Tests_Bootstrap {
 
