@@ -80,3 +80,33 @@ jobs:
             php -d memory_limit=-1 vendor/bin/phpunit
           env:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
+
+  lint:
+    runs-on:  ubuntu-latest
+    name: PHP lint
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: mbstring, intl #optional, setup extensions
+          ini-values: post_max_size=256M, short_open_tag=On #optional, setup php.ini configuration
+          coverage: xdebug #optional, setup coverage driver
+
+      - name: Check PHP Version
+        run: php -v
+
+      - name: Cache composer packages
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install PHPCS with WordPress Coding Standards
+        run: |
+          composer require dealerdirect/phpcodesniffer-composer-installer wp-coding-standards/wpcs:2.3.0
+
+      - name: Run PHPCS Coding Standards
+        run: |
+          vendor/bin/phpcs $GITHUB_WORKSPACE
