@@ -11,12 +11,12 @@
  * Plugin URI: https://jeffmcneill.com/markdown-extra
  * Description:
  * Version: 1.0.1
- * Author:
+ * Author: Jeff Mcneill
  * Author URI:
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Requires at least: 5.2
- * Requires PHP: 5.6
+ * Requires PHP: 5.6.20
  *
  * Copyright (c) 2021 Jeff Mcneill <https://jeffmcneill.com/markdown-extra>
  * All rights reserved.
@@ -78,27 +78,33 @@ require_once __DIR__ . '/Michelf/Markdown.php';
 require_once __DIR__ . '/Michelf/MarkdownExtra.php';
 
 /**
- *
+ * Class Markdown_Extra
  */
 class Markdown_Extra {
 
 	/**
+	 * Holds "hidden tags".
+	 *
 	 * @var array
 	 */
 	private $hidden_tags;
 
 	/**
+	 * Holds "place holders".
+	 * 
 	 * @var array
 	 */
 	private $placeholders;
 
 	/**
+	 * Holds MarkdownExtra instance.
+	 *
 	 * @var object
 	 */
 	private $parser;
 
 	/**
-	 *
+	 * Class constructor.
 	 */
 	public function __construct() {
 		register_activation_hook( __FILE__, array( __CLASS__, 'activate' ) );
@@ -124,19 +130,23 @@ class Markdown_Extra {
 	}
 
 	/**
+	 * Run single site / network-wide activation of the plugin.
 	 *
+	 * @param bool $networkwide Whether the plugin is being activated network-wide.
 	 */
-	public static function activate() {
+	public static function activate( $networkwide = false ) {
 	}
 
 	/**
+	 * Run single site / network-wide de-activation of the plugin.
 	 *
+	 * @param bool $networkwide Whether the plugin is being de-activated network-wide.
 	 */
-	public static function deactivate() {
+	public static function deactivate( $networkwide = false ) {
 	}
 
 	/**
-	 *
+	 * Init.
 	 */
 	public function init() {
 		if ( defined( 'MARKDOWN_WP_POSTS' ) ) {
@@ -210,6 +220,8 @@ class Markdown_Extra {
 
 	/**
 	 * Add a footnote id prefix to posts when inside a loop.
+	 *
+	 * @param string $text
 	 */
 	public function markdown_post( $text ) {
 
@@ -223,7 +235,7 @@ class Markdown_Extra {
 	}
 
 	/**
-	 * Add "p"
+	 * Add "p".
 	 *
 	 * @param string $text
 	 */
@@ -237,7 +249,7 @@ class Markdown_Extra {
 	}
 
 	/**
-	 * Strip "p"
+	 * Strip "p".
 	 *
 	 * @param string $text
 	 */
@@ -246,7 +258,7 @@ class Markdown_Extra {
 	}
 
 	/**
-	 * "Hide" tags
+	 * "Hide" tags.
 	 *
 	 * @param string $text
 	 */
@@ -255,7 +267,7 @@ class Markdown_Extra {
 	}
 
 	/**
-	 * "Unhide" tags
+	 * "Unhide" tags.
 	 *
 	 * @param string $text
 	 */
