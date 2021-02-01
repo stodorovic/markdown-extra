@@ -112,6 +112,6 @@ jobs:
           echo $GITHUB_WORKSPACE
           vendor/bin/phpcs --config-show
           vendor/bin/phpcs -i
-          vendor/bin/phpcs --standard=PHPCompatibility --runtime-set testVersion 5.4- --ignore="vendor/*" $GITHUB_WORKSPACE
+          vendor/bin/phpcs --standard=PHPCompatibility --runtime-set testVersion 5.4- --ignore="vendor/*" -p $GITHUB_WORKSPACE
 
       #vendor/bin/phpcs --standard=WordPress --ignore="Michelf/*,vendor/*" $GITHUB_WORKSPACE
