@@ -77,7 +77,7 @@ jobs:
 
       -   name: Execute tests
           run: |
-            php -d memory_limit=-1 vendor/bin/phpunit
+            php vendor/bin/phpunit -c tests/unit/phpunit.xml
           env:
             DB_PORT: ${{ job.services.mysql.ports[3306] }}
 
@@ -91,7 +91,7 @@ jobs:
         with:
           php-version: 7.4
           extensions: mbstring, intl #optional, setup extensions
-          ini-values: post_max_size=256M, short_open_tag=On #optional, setup php.ini configuration
+          ini-values: memory_limit=256M #optional, setup php.ini configuration
           coverage: xdebug #optional, setup coverage driver
 
       - name: Check PHP Version
@@ -105,8 +105,9 @@ jobs:
 
       - name: Install PHPCS with WordPress Coding Standards
         run: |
-          composer require dealerdirect/phpcodesniffer-composer-installer wp-coding-standards/wpcs:2.3.0 phpcompatibility/php-compatibility
+          composer require dealerdirect/phpcodesniffer-composer-installer wp-coding-standards/wpcs phpcompatibility/php-compatibility
 
       - name: Run PHPCS Coding Standards
         run: |
           vendor/bin/phpcs --standard=WordPress --ignore="Michelf/*,vendor/*" $GITHUB_WORKSPACE
+          vendor/bin/phpcs --standard=PHPCompatibility --runtime-set testVersion 5.4- --ignore="vendor/*" $GITHUB_WORKSPACE
