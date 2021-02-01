@@ -1,7 +1,12 @@
 <?php
+/**
+ * Markdown_Extra plugin test file.
+ *
+ * @package  Markdown_Extra\Tests
+ */
 
 /**
- * Class
+ * Class Tests_Markdown
  */
 class Tests_Markdown extends Markdown_Unit_Test_Case {
 

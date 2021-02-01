@@ -2,7 +2,7 @@
 /**
  * Markdown Extra Unofficial Plugin.
  *
- * @package   Markdown_Extra
+ * @package   Markdown_Extra\Main
  * @copyright Copyright (c) 2021 Jeff Mcneill <https://jeffmcneill.com/markdown-extra>
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 or higher
  *

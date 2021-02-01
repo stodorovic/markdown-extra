@@ -2,7 +2,11 @@
 /**
  * Markdown_Extra plugin test file.
  *
- * @package Markdown_Extra\Tests
+ * @package  Markdown_Extra\Tests
+ */
+
+/**
+ * Class Unit_Tests_Bootstrap
  */
 class Unit_Tests_Bootstrap {
 
@@ -20,10 +24,18 @@ class Unit_Tests_Bootstrap {
 	 */
 	public $wp_tests_dir;
 
-	/** @var string testing directory */
+	/**
+	 * Testing directory.
+	 *
+	 * @var string
+	 */
 	public $tests_dir;
 
-	/** @var string plugin directory */
+	/**
+	 * Plugin directory.
+	 *
+	 * @var string
+	 */
 	public $plugin_dir;
 
 	/**
@@ -51,9 +63,12 @@ class Unit_Tests_Bootstrap {
 		if ( $manual_bootstrap ) {
 			require_once $this->wp_tests_dir . '/includes/bootstrap.php';
 
-			// Load testing framework
-			// Note: you must copy code of this function to your include function of bootstrap class
-			// Or use Unit_Tests_Bootstrap::includes();
+			/**
+			 * Load testing framework
+			 *
+			 * Note: you must copy code of this function to your include function of bootstrap class
+			 * Or use Unit_Tests_Bootstrap::includes();
+			 */
 			$this->includes();
 		}
 	}
